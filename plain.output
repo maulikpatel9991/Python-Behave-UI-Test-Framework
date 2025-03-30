@@ -1,0 +1,12 @@
+Feature: Open Automation Exercise Website
+
+  Scenario: Verify site opens successfully
+    Given I open the website ... passed in 1.251s
+    Then I should see the logo ... passed in 0.043s
+
+Feature: Open Automation Exercise Website
+
+  Scenario: Verify that the website opens successfully
+    Given I navigate to the Automation Exercise website ... passed in 0.264s
+    Then I should see the home page header text ... passed in 0.128s
+

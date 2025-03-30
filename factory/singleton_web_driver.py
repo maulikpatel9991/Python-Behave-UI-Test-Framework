@@ -8,6 +8,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from utils.logger import BaseLogging
 from selenium.webdriver.chrome.options import Options
+import tempfile
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.edge.options import Options as EdgeOptions
 
@@ -24,6 +25,8 @@ class WebDriverManager:
                 options = webdriver.ChromeOptions()
                 options.add_argument("--disable-gpu")
                 options.add_argument("--window-size=1920,1080")
+                user_data_dir = tempfile.mkdtemp()  # Create a temporary directory for user data
+                options.add_argument(f"user-data-dir={user_data_dir}")  
                 if mode == "headless":
                     options.add_argument("--headless")
                 service = ChromeService(ChromeDriverManager().install())
