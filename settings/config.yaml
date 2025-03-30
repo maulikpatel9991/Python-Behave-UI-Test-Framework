@@ -1,0 +1,29 @@
+# config.yaml
+env: prod
+
+
+prod:
+  browser: "chrome"  # options: "chrome", "firefox"
+  headless: true
+  CsvFolder: test_csv_data_prod     # Folder for CSV data in production environment
+  jsonFolder: test_json_data_prod 
+  base_url: "https://www.saucedemo.com/"
+  apiurl: "demo"
+  timeout: 30
+  output_dir: reports/allure-results
+
+qa:
+  base_url: "https://automationexercise.com/"
+  browser: "chrome"  # options: "chrome", "firefox"
+  headless: true
+  CsvFolder: test_csv_data_prod     # Folder for CSV data in production environment
+  jsonFolder: test_json_data_prod 
+  apiurl: "demo"
+  timeout: 30
+  output_dir: reports/allure-results
+  timeout: 30
+  output_dir: reports/allure-results
+
+
+# export ENV="prod"
+# https://ultimateqa.com/dummy-automation-websites/
