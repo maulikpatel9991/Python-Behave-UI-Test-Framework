@@ -3,10 +3,10 @@ name: Run Behave Tests
 on:
   push:
     branches:
-      - Test  # Runs when pushing to the 'main' branch (adjust if using a different branch)
+      - main  # Runs when pushing to the 'main' branch (adjust if using a different branch)
   pull_request:
     branches:
-      - Test  # Runs on pull requests to 'main' branch
+      - main  # Runs on pull requests to 'main' branch
   workflow_dispatch:  # This allows manually triggering the workflow from GitHub
 
 jobs:
@@ -25,10 +25,15 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install behave selenium pyyaml  # Installing required packages
+        pip install behave selenium pyyaml webdriver-manager  # Add webdriver-manager here
 
     - name: Run Behave tests
       run: |
-        behave  # Run behave tests (if behave is in your path)
-        
-   
+        behave  # Run behave tests (make sure behave is in your path)
+
+    - name: Upload test results (Optional)
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: behave-results
+        path: ./reports/  # Adjust the path if you are generating reports (e.g., HTML or JSON)
