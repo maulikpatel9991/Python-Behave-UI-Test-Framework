@@ -8,18 +8,18 @@ class WebDriverManager:
     _driver = None
 
     @staticmethod
-    def get_driver(browser="chrome"):
+    def get_driver(browser="chrome", mode='headless'):
         """Initializes the driver dynamically based on command-line input."""
         if WebDriverManager._driver is None:
             options = None
 
             if browser == "chrome":
                 options = webdriver.ChromeOptions()
-                # options.add_argument("--disable-gpu")
-                # options.add_argument("--window-size=1920,1080")
+                options.add_argument("--disable-gpu")
+                options.add_argument("--window-size=1920,1080")
                 options.add_argument("--headless")
-                # if mode == "headless":
-                #     options.add_argument("--headless")
+                if mode == "headless":
+                    options.add_argument("--headless")
 
                 WebDriverManager._driver = webdriver.Chrome(
                     ChromeDriverManager().install(), options=options
