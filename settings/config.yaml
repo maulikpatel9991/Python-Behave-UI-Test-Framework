@@ -13,7 +13,8 @@ prod:
   output_dir: reports/allure-results
 
 qa:
-  base_url: "https://automationexercise.com/"
+  # base_url: "https://automationexercise.com/"
+  base_url: "https://www.saucedemo.com/"
   browser: "chrome"  # options: "chrome", "firefox"
   headless: true
   CsvFolder: test_csv_data_prod     # Folder for CSV data in production environment

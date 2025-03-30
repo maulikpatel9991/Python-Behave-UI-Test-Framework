@@ -1,14 +1,23 @@
 import argparse
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from selenium.webdriver.edge.service import Service as EdgeService
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from utils.logger import BaseLogging
+from selenium.webdriver.chrome.options import Options
+import tempfile
+import time
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.edge.options import Options as EdgeOptions
 
 class WebDriverManager:
     _driver = None
 
     @staticmethod
-    def get_driver(browser="chrome", mode="web"):
+    def get_driver(browser="chrome", mode='web'):
         """Initializes the driver dynamically based on command-line input."""
         if WebDriverManager._driver is None:
             options = None
@@ -16,31 +25,26 @@ class WebDriverManager:
             if browser == "chrome":
                 options = webdriver.ChromeOptions()
                 options.add_argument("--disable-gpu")
-                options.add_argument("--window-size=1920,1080")
+                options.add_argument("--window-size=1920,1080")   
                 if mode == "headless":
                     options.add_argument("--headless")
+                service = ChromeService(ChromeDriverManager().install())
+                WebDriverManager._driver = webdriver.Chrome(service=service, options=options)
 
-                WebDriverManager._driver = webdriver.Chrome(
-                    ChromeDriverManager().install(), options=options
-                )
 
             elif browser == "firefox":
-                options = webdriver.FirefoxOptions()
+                options = FirefoxOptions()
                 if mode == "headless":
                     options.add_argument("--headless")
-
-                WebDriverManager._driver = webdriver.Firefox(
-                    executable_path=GeckoDriverManager().install(), options=options
-                )
+                service = FirefoxService(GeckoDriverManager().install())
+                WebDriverManager._driver = webdriver.Firefox(service=service, options=options)
 
             elif browser == "edge":
-                options = webdriver.EdgeOptions()
+                options = EdgeOptions()
                 if mode == "headless":
                     options.add_argument("--headless")
-
-                WebDriverManager._driver = webdriver.Edge(
-                    executable_path=EdgeChromiumDriverManager().install(), options=options
-                )
+                service = EdgeService(EdgeChromiumDriverManager().install())
+                WebDriverManager._driver = webdriver.Edge(service=service, options=options)
 
         return WebDriverManager._driver
 

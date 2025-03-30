@@ -36,6 +36,7 @@ def before_all(context):
     context.driver = WebDriverManager.get_driver(browser, mode)
 
 
+
 def after_all(context):
     """
     Hook executed after all tests complete.
