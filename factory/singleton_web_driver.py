@@ -9,6 +9,7 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from utils.logger import BaseLogging
 from selenium.webdriver.chrome.options import Options
 import tempfile
+import time
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.edge.options import Options as EdgeOptions
 
