@@ -31,9 +31,9 @@ jobs:
       run: |
         behave  # Run behave tests (make sure behave is in your path)
 
-    - name: Upload test results (Optional)
-      if: always()
-      uses: actions/upload-artifact@v2
-      with:
-        name: behave-results
-        path: ./reports/  # Adjust the path if you are generating reports (e.g., HTML or JSON)
+    # - name: Upload test results (Optional)
+    #   if: always()
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: behave-results
+    #     path: ./reports/  # Adjust the path if you are generating reports (e.g., HTML or JSON)
