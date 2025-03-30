@@ -25,7 +25,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install behave selenium pyyaml webdriver-manager allure-pytest # Add webdriver-manager here
+        pip install behave selenium pyyaml webdriver-manager allure-pytest allure-behave # Add webdriver-manager here
 
     - name: Run Behave tests
       run: |
