@@ -27,14 +27,14 @@ def before_all(context):
 
     # Default browser and mode (can be modified dynamically)
     browser = "chrome"
-    mode = "headless"
+    mode = "web"
 
     # Store report directory path in context
     context.allure_report_directory = report_dir
-    BaseLogging.info(f"✅ URLs from application are ready! {context.base_url}")
+
     # Initialize WebDriver
     context.driver = WebDriverManager.get_driver(browser, mode)
-    BaseLogging.info(f"✅ URLs from application are ready! ===== {context.base_url}")
+
 
 
 def after_all(context):
