@@ -4,7 +4,7 @@ PyYAML
 webdriver-manager
 allure-pytest
 allure-behave
-
+django
 
 # 
 # export ENV="prod"
