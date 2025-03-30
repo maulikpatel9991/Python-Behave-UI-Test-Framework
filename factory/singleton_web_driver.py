@@ -25,8 +25,8 @@ class WebDriverManager:
                 options = webdriver.ChromeOptions()
                 options.add_argument("--disable-gpu")
                 options.add_argument("--window-size=1920,1080")
-                user_data_dir = tempfile.mkdtemp()  # Create a temporary directory for user data
-                options.add_argument(f"user-data-dir={user_data_dir}")  
+                user_data_dir = tempfile.mkdtemp() + f"_{int(time.time())}"  # Ensures uniqueness
+                options.add_argument(f"user-data-dir={user_data_dir}")   
                 if mode == "headless":
                     options.add_argument("--headless")
                 service = ChromeService(ChromeDriverManager().install())
