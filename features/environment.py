@@ -33,7 +33,7 @@ def before_all(context):
     context.allure_report_directory = report_dir
 
     # Initialize WebDriver
-    context.driver = WebDriverManager.get_driver(browser, mode)
+    context.driver = WebDriverManager.get_driver(browser)
 
 
 def after_all(context):
