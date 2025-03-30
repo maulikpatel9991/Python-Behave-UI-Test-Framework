@@ -31,7 +31,7 @@ def before_all(context):
 
     # Store report directory path in context
     context.allure_report_directory = report_dir
-
+    BaseLogging.info(f"✅ URLs from application are ready! {context.base_url}")
     # Initialize WebDriver
     context.driver = WebDriverManager.get_driver(browser, mode)
 

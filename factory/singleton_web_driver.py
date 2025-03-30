@@ -3,6 +3,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from utils.logger import BaseLogging
 
 class WebDriverManager:
     _driver = None
@@ -20,7 +21,7 @@ class WebDriverManager:
                 options.add_argument("--headless")
                 if mode == "headless":
                     options.add_argument("--headless")
-
+                BaseLogging.info(f"✅ URLs from application are ready! {mode}")
                 WebDriverManager._driver = webdriver.Chrome(
                     ChromeDriverManager().install(), options=options
                 )
