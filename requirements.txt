@@ -2,6 +2,7 @@ behave
 selenium
 PyYAML
 webdriver-manager
+allure-pytest
 
 
 # 
