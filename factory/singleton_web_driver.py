@@ -33,6 +33,18 @@ class WebDriverManager:
                 service = ChromeService(ChromeDriverManager().install())
                 WebDriverManager._driver = webdriver.Chrome(service=service, options=options)
 
+                               # Cleanup the user data directory after the test run
+                def cleanup():
+                    try:
+                        if os.path.exists(user_data_dir):
+                            shutil.rmtree(user_data_dir)  # Delete the temp directory after use
+                    except Exception as e:
+                        print(f"Error cleaning up user data dir: {e}")
+
+                # Register cleanup to ensure user data dir is cleaned up
+                import atexit
+                atexit.register(cleanup)
+
             elif browser == "firefox":
                 options = FirefoxOptions()
                 if mode == "headless":
