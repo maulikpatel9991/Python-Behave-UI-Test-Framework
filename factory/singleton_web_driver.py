@@ -25,6 +25,7 @@ class WebDriverManager:
                 WebDriverManager._driver = webdriver.Chrome(
                     ChromeDriverManager().install(), options=options
                 )
+                BaseLogging.info(f"✅ URLs from application are ready! {mode}")
 
             elif browser == "firefox":
                 options = webdriver.FirefoxOptions()
