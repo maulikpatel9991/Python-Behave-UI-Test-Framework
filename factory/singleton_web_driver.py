@@ -15,8 +15,8 @@ class WebDriverManager:
 
             if browser == "chrome":
                 options = webdriver.ChromeOptions()
-                options.add_argument("--disable-gpu")
-                options.add_argument("--window-size=1920,1080")
+                # options.add_argument("--disable-gpu")
+                # options.add_argument("--window-size=1920,1080")
                 options.add_argument("--headless")
                 # if mode == "headless":
                 #     options.add_argument("--headless")
