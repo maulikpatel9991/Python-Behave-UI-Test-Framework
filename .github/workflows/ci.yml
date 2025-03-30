@@ -3,10 +3,10 @@ name: Run Behave Tests
 on:
   push:
     branches:
-      - main  # Runs when pushing to the 'main' branch (adjust if using a different branch)
+      - Test  # Runs when pushing to the 'main' branch (adjust if using a different branch)
   pull_request:
     branches:
-      - main  # Runs on pull requests to 'main' branch
+      - Test  # Runs on pull requests to 'main' branch
   workflow_dispatch:  # This allows manually triggering the workflow from GitHub
 
 jobs:
